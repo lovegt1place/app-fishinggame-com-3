@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lovegt1place.github.io/app-fishinggame-com-3/sitemap.xml

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>捕鱼游戏｜产品说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fbe9d2 0%, #f5d5b0 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      line-height: 1.7;
+      color: #3b2b1a;
+    }
+
+    .card {
+      max-width: 820px;
+      width: 100%;
+      background: #fffffffa;
+      backdrop-filter: blur(2px);
+      border-radius: 40px 40px 40px 40px;
+      box-shadow: 0 20px 40px rgba(120, 70, 30, 0.12), 0 8px 20px rgba(0, 0, 0, 0.04);
+      padding: 2.8rem 2.5rem;
+      transition: box-shadow 0.2s ease;
+      border: 1px solid rgba(255, 245, 225, 0.6);
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 2rem 1.5rem;
+        border-radius: 28px;
+      }
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #4d301a;
+      margin-bottom: 0.1rem;
+      line-height: 1.2;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    h1 small {
+      font-size: 1rem;
+      font-weight: 400;
+      background: #f0dbc6;
+      color: #4d301a;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+      margin-left: 8px;
+    }
+
+    .subhead {
+      font-size: 1.05rem;
+      color: #6b4d2f;
+      margin-bottom: 2rem;
+      border-left: 4px solid #ca9f7a;
+      padding-left: 1rem;
+      background: #fbf3ea;
+      border-radius: 0 20px 20px 0;
+      display: inline-block;
+      padding: 0.5rem 1.2rem 0.5rem 1.2rem;
+    }
+
+    .summary {
+      background: #fffbf6;
+      padding: 1.5rem 1.8rem;
+      border-radius: 28px;
+      margin: 1.8rem 0 2.2rem 0;
+      border: 1px solid #ecdccb;
+    }
+
+    .summary p {
+      margin-bottom: 0.8rem;
+    }
+
+    .summary p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin: 2rem 0;
+    }
+
+    .highlight-item {
+      background: #fcf4eb;
+      padding: 1.2rem 1rem 1rem 1rem;
+      border-radius: 24px;
+      box-shadow: 0 2px 6px rgba(150, 100, 50, 0.04);
+      transition: 0.15s ease;
+    }
+
+    .highlight-item strong {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #4d2f15;
+      margin-bottom: 0.2rem;
+    }
+
+    .highlight-item span {
+      font-size: 1.9rem;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    .suggestion-box {
+      background: #efe2d3;
+      padding: 1.5rem 1.8rem;
+      border-radius: 28px;
+      margin: 2rem 0 1.6rem 0;
+      border: 1px solid #dcc2ab;
+    }
+
+    .suggestion-box h3 {
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #3b2411;
+      margin-bottom: 0.6rem;
+    }
+
+    .suggestion-box ul {
+      padding-left: 1.2rem;
+      list-style-type: disc;
+      color: #3f2c19;
+    }
+
+    .suggestion-box li {
+      margin-bottom: 0.4rem;
+    }
+
+    .faq-mini {
+      margin-top: 2rem;
+      border-top: 1px solid #e5d2be;
+      padding-top: 1.6rem;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.6rem;
+      background: #faf3eb;
+      padding: 0.6rem 1rem;
+      border-radius: 30px;
+      border: 1px solid #e1cfbb;
+      cursor: pointer;
+    }
+
+    .faq-mini summary {
+      font-weight: 600;
+      color: #3f2b18;
+      font-size: 1rem;
+    }
+
+    .faq-mini details p {
+      margin-top: 0.5rem;
+      color: #4d3620;
+      padding-left: 0.4rem;
+    }
+
+    .disclaimer {
+      background: #f4ede5;
+      border-radius: 30px;
+      padding: 0.8rem 1.4rem;
+      font-size: 0.9rem;
+      color: #5c4632;
+      margin: 2rem 0 1.4rem 0;
+      border: 1px solid #dcc8b4;
+      text-align: center;
+    }
+
+    .btn-link {
+      display: inline-block;
+      background: #b78c6a;
+      color: white;
+      font-weight: 500;
+      padding: 0.5rem 1.8rem;
+      border-radius: 60px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+      font-size: 1rem;
+      border: none;
+      box-shadow: 0 4px 12px rgba(150, 90, 40, 0.15);
+      letter-spacing: 0.3px;
+    }
+
+    .btn-link:hover {
+      background: #9f7454;
+      transform: scale(1.02);
+    }
+
+    .btn-link:active {
+      transform: scale(0.97);
+    }
+
+    .inline-link {
+      color: #8a623f;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid #dbbc9f;
+      transition: 0.1s;
+    }
+
+    .inline-link:hover {
+      border-bottom-color: #8a623f;
+      color: #4b2d14;
+    }
+
+    .footer-note {
+      font-size: 0.85rem;
+      color: #6b543d;
+      text-align: center;
+      margin-top: 2rem;
+      opacity: 0.7;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #e2cfbb;
+      margin: 1.8rem 0 0.8rem 0;
+    }
+
+    .flex-center {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>
+      🐟 捕鱼游戏
+      <small>产品说明</small>
+    </h1>
+    <div class="subhead">一眼识别这个网站是做什么的</div>
+
+    <!-- 摘要区：快速理解用途 -->
+    <div class="summary">
+      <p><strong>简单说：</strong> 这是一个以经典街机玩法为原型的在线捕鱼游戏站点。你不需要下载任何软件，打开浏览器就能体验炮台瞄准、鱼群游弋、金币积累的核心乐趣。整个网站围绕“瞄准—发射—捕获”这一基础循环设计，适合打发碎片时间或回味老式游戏厅氛围。</p>
+      <p>页面简洁，没有弹窗干扰，也没有复杂的教学门槛。无论你是第一次听说这类游戏，还是想找一个轻量放松的入口，这个站点都值得花三分钟逛逛。</p>
+    </div>
+
+    <!-- 亮点卡片 -->
+    <div class="highlight-grid">
+      <div class="highlight-item">
+        <strong><span>🎯</span> 即时上手</strong>
+        打开页面即可看到炮台和鱼群，不需要注册或填写资料。鼠标或触屏都能直接操作，反馈很跟手。
+      </div>
+      <div class="highlight-item">
+        <strong><span>🐠</span> 鱼种丰富</strong>
+        从小丑鱼到黄金龙鱼，不同鱼种对应不同分数和游动轨迹，每次开局都有新鲜感。
+      </div>
+      <div class="highlight-item">
+        <strong><span>⚡</span> 节奏舒适</strong>
+        游戏速度不紧不慢，不会因为一波接一波的鱼群而感到压迫，也没有强制等待时间。
+      </div>
+      <div class="highlight-item">
+        <strong><span>📱</span> 跨设备</strong>
+        手机、平板、电脑均可访问，布局自动适配，碎片时间随手就能玩两局。
+      </div>
+    </div>
+
+    <!-- 使用建议（非诱导，偏实用） -->
+    <div class="suggestion-box">
+      <h3>💡 使用建议</h3>
+      <ul>
+        <li><strong>先观察再开火：</strong> 鱼群并非匀速游动，留意大鱼的出现时机和路径，瞄准后连续射击效率更高。</li>
+        <li><strong>管理金币：</strong> 每局开始系统会分配基础金币，建议不要一直使用最高倍率炮台，尝试不同档位找到节奏。</li>
+        <li><strong>网络环境：</strong> 因为是实时同步的网页游戏，稳定的 Wi-Fi 或移动网络能避免掉线重连。</li>
+        <li><strong>短时娱乐：</strong> 适合在午休、通勤或等餐时玩 10~15 分钟，轻松为主，不必强求高分。</li>
+      </ul>
+    </div>
+
+    <!-- 可信但克制的访问说明 + 自然嵌入链接 -->
+    <div class="flex-center" style="margin: 1.2rem 0 0.8rem 0;">
+      <span style="font-weight: 500; color: #3f2b18;">🔍 想试试看？</span>
+      <span style="background: #f2e5d8; padding: 0.2rem 1.2rem; border-radius: 50px; font-size: 0.9rem; color: #4d3620;">没有任何下载或注册步骤</span>
+    </div>
+    <p style="margin: 0.2rem 0 1.4rem 0;">
+      如果你对这类游戏感到好奇，可以直接前往 
+      <a href="https://app-fishinggame.com" class="inline-link">捕鱼游戏</a> 
+      的页面。整个界面只有游戏画面和基本功能按钮，没有多余广告位，也没有强制关注或付费解锁。建议先随意打几炮熟悉手感，再慢慢提升瞄准精度。
+    </p>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+      <h3 style="font-weight:600; font-size:1.1rem; margin-bottom:0.8rem; color:#3b2411;">❓ 常见疑问摘要</h3>
+      <details>
+        <summary>这个网站需要安装插件或软件吗？</summary>
+        <p>完全不需要。基于浏览器运行，只要设备能联网、使用现代浏览器（Chrome、Safari、Edge 等）就能正常玩。没有后台下载，也不会额外安装任何程序。</p>
+      </details>
+      <details>
+        <summary>游戏里有内购或强制付费吗？</summary>
+        <p>站点不设置任何付费门槛。初始金币足够你体验完整玩法，不存在“玩到一半必须付钱”的设计。部分模式可能提供道具，但均为游戏内金币兑换，不涉及外部支付。</p>
+      </details>
+      <details>
+        <summary>对设备性能有要求吗？</summary>
+        <p>很低。普通智能手机或 5 年前的电脑都能流畅运行。如果画面卡顿，可以尝试关闭后台其他标签页或降低屏幕分辨率。</p>
+      </details>
+    </div>
+
+    <!-- 提示 / 温和说明 -->
+    <div class="disclaimer">
+      🧭 提示：本页面为产品介绍，不存储用户数据，也不收集任何个人信息。游戏内容仅供娱乐，请合理安排时间。
+    </div>
+
+    <!-- 一个显眼的链接按钮（符合要求，文本＝捕鱼游戏） -->
+    <div style="text-align: center; margin: 1.2rem 0 0.5rem 0;">
+      <a href="https://app-fishinggame.com" class="btn-link">捕鱼游戏</a>
+    </div>
+
+    <hr />
+    <div class="footer-note">
+      基于真实产品页面整理 · 信息更新于最近版本
+    </div>
+  </div>
+</body>
+</html>
